@@ -8,6 +8,9 @@
 #
 # ./gradlew build -Dquarkus.package.type=native
 #
+# witthout tests: ./gradlew build -Dquarkus.package.type=native -x test
+# -Dquarkus.native.container-build=true
+#
 # Then, build the image with:
 #
 # docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/testcontainers-demo .
@@ -23,6 +26,7 @@ RUN chown 1001 /work \
     && chmod "g+rwX" /work \
     && chown 1001:root /work
 COPY --chown=1001:root build/*-runner /work/application
+RUN chmod +x /work/application
 
 EXPOSE 8080
 USER 1001
