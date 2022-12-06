@@ -1,2 +1,13 @@
 greeting:
   message: "hello"
+
+quarkus:
+  datasource:
+    db-kind: PostgreSQL
+
+"%prod":
+  quarkus:
+    datasource:
+      db-kind: H2
+      jdbc:
+        url: jdbc:h2:mem:default
